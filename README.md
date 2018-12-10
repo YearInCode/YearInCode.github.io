@@ -6,7 +6,7 @@ GitHub user who already got their Spotify 2018 Wrapped? Fret not because YearInC
 
 ---
 
-### What you can do
+## What you can do
 
 Deck the code with **2018 Wrapped** - a fun way of finding out what you did this year to make your GitHub experience all the more merrier and joyful!
 
