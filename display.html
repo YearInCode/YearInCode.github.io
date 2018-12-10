@@ -18,8 +18,8 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="display.css" />
+    <script src="display.js"></script>
   </head>
 
   <body>
@@ -31,24 +31,27 @@
       </div>
     </div>
 
-    <div id="hero">
+    <div id="prepare">
       <p id="title">
-        Your 2018 <br />
-        <span>Wrapped()</span>
+        Before we get into your GitHub 2018, let's take a moment to appreciate
+        code culture!
       </p>
-      <p id="subtitle">
-        Take a look at how you've coded. <br />
-        Because no one else coded exactly like you.
-      </p>
-      <button id="auth-button">CONNECT WITH GITHUB</button>
-    </div>
-
-    <div id="footer">
-      <p>
-        Made with <i class="fas fa-heart"></i> by
-        <a href="https://twitter.com/rishabh16_">Rishabh Anand</a> and
-        <a href="https://twitter.com/sarvasvkulpati">Sarvasv Kulpati</a>
-      </p>
+      <div id="prepare-scroller">
+        <p class="prepare-message" id="total-devs">
+          You're part of a community of more than <br />
+          <span class="message-span" id="total-devs-span">31M</span> developers
+        </p>
+        <p class="prepare-message" id="total-orgs">
+          who are a part of more than <br />
+          <span class="message-span" id="total-orgs-span">2.1M</span>
+          organisations
+        </p>
+        <p class="prepare-message" id="total-repos">
+          that have created more than <br />
+          <span class="message-span" id="total-repos-span">96M</span>
+          repositories
+        </p>
+      </div>
     </div>
   </body>
 </html>

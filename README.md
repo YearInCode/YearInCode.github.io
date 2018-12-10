@@ -2,7 +2,7 @@
 
 A year in code - reviewed
 <br>
-GitHub user who already got their Spotify 2018 Wrapped? Fret not because YearInCode has your back!
+Are you a GitHub user who already got their Spotify 2018 Wrapped? Fret not because YearInCode has your back!
 
 ---
 
