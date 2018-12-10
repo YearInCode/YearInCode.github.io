@@ -25,5 +25,5 @@ Tweet it, Blog about it on Medium, Share it on Facebook - spread the cheer for N
 
 ## Contributors
 
-This fun app was made by fellow GitHub users and programmers [Rishabh Anand](https://twitter.com/rishabh16_) and [Sarvasv Kulpati](https://twitter.com/sarvasvkulpati).
+This fun app was made by fellow GitHub users [Rishabh Anand](https://twitter.com/rishabh16_) and [Sarvasv Kulpati](https://twitter.com/sarvasvkulpati).
 It'd mean a lot if you could _Star_ this repo and, share and spread it amongst friends and family!
