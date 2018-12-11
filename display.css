@@ -58,13 +58,13 @@ img {
 #prepare #title {
   width: 50%;
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 500;
   margin: 30px auto;
 }
 
 #prepare #prepare-scroller {
-  width: 65%;
-  height: 165px;
+  width: auto;
+  height: auto;
   overflow: scroll;
   background-color: red;
   margin: 0 auto;
@@ -77,6 +77,7 @@ img {
 }
 
 .prepare-message {
+  height: auto;
   font-size: 30px;
   font-weight: 600;
 }
