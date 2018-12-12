@@ -15,21 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Alternative is redirect
     OAuth.popup("github").then(github => {
       console.log("github:", github);
-      // Retrieves user data from oauth provider
-      // Prompts 'welcome' message with User's email on successful login
-      // #me() is a convenient method to retrieve user data without requiring you
-      // to know which OAuth provider url to call
-      github.me().then(data => {
-        console.log("me data:", data);
-        var w = window.open("./display.html");
-        w.accessToken = data;
-        window.location = "./display.html";
-      });
-      // Retrieves user data from OAuth provider by using #get() and
-      // OAuth provider url
-      github.get("/user").then(data => {
-        console.log("self data:", data);
-      });
+      var w = window.open("./display.html");
+      w.accessToken = github;
+      window.location = "./display.html";
     });
   });
 });
