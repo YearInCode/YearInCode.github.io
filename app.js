@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("github:", github);
       var w = window.open("./display.html");
       w.accessToken = github;
-      window.location = "./display.html";
     });
   });
 });
