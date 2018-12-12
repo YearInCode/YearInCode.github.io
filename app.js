@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // to know which OAuth provider url to call
       github.me().then(data => {
         console.log("me data:", data);
-        window.alert("GitHub says your email is:" + data.email);
+        var w = window.open("./display.html");
+        w.accessToken = data;
+        window.location("./display.html");
       });
       // Retrieves user data from OAuth provider by using #get() and
       // OAuth provider url
