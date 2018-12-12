@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("me data:", data);
         var w = window.open("./display.html");
         w.accessToken = data;
-        window.location("./display.html");
+        window.location = "./display.html";
       });
       // Retrieves user data from OAuth provider by using #get() and
       // OAuth provider url
