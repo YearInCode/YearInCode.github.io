@@ -147,6 +147,51 @@ img {
 
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
+#prepare {
+  width: 100%;
+  min-height: 100%;
+  background-image: linear-gradient(to bottom, #8f88ee, #cd84f1, #dbaaf3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}
+
+#prepare #title {
+  width: 50%;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 30px auto;
+}
+
+#prepare #prepare-scroller {
+  width: auto;
+  height: auto;
+  overflow: scroll;
+  background-color: red;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#prepare #prepare-scroller::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.prepare-message {
+  height: auto;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.prepare-message .message-span {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
 @media (max-width: 530px) {
   #hero #title {
     font-size: 58px;

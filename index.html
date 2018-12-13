@@ -19,6 +19,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+
+    <script src="https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
     <script src="app.js"></script>
@@ -33,16 +35,42 @@
       </div>
     </div>
 
-    <div id="hero">
-      <p id="title">
-        Your 2018 <br />
-        <span>Wrapped()</span>
-      </p>
-      <p id="subtitle">
-        Take a look at how you've coded. <br />
-        Because no one else coded exactly like you.
-      </p>
-      <button id="auth-button">CONNECT WITH GITHUB</button>
+    <div id="fullpage">
+      <div class="section" id="hero">
+        <p id="title">
+          Your 2018 <br />
+          <span>Wrapped()</span>
+        </p>
+        <p id="subtitle">
+          Take a look at how you've coded. <br />
+          Because no one else coded exactly like you.
+        </p>
+        <button id="auth-button">CONNECT WITH GITHUB</button>
+      </div>
+
+      <div class="section" id="prepare">
+        <p id="title">
+          Before we get into your GitHub 2018, let's take a moment to appreciate
+          code culture!
+        </p>
+        <div id="prepare-scroller">
+          <p class="prepare-message" id="total-devs">
+            You're part of a community of more than <br />
+            <span class="message-span" id="total-devs-span">31M</span>
+            developers
+          </p>
+          <p class="prepare-message" id="total-orgs">
+            who are a part of more than <br />
+            <span class="message-span" id="total-orgs-span">2.1M</span>
+            organisations
+          </p>
+          <p class="prepare-message" id="total-repos">
+            that have created more than <br />
+            <span class="message-span" id="total-repos-span">96M</span>
+            repositories
+          </p>
+        </div>
+      </div>
     </div>
 
     <div id="footer">

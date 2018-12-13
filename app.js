@@ -16,13 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const clientID = "05d4f56f89ba1a91c3bd";
   const clientSecret = "a9e53f438683513f1fd92d561cce3252af0504e9";
 
+  const hero = document.getElementById("hero");
+  const prepare = document.getElementById("prepare");
+
   var provider = new firebase.auth.GithubAuthProvider();
   provider.addScope("repo");
   provider.addScope("user");
   provider.setCustomParameters({
     allow_signup: true
   });
-  let userInfo;
 
   function httpGetAsync(theUrl, callback) {
     var xmlHttp = new XMLHttpRequest();
@@ -48,7 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
           `https://api.github.com/user?access_token=${token}`
         );
         promise.done(data => {
-          userInfo = data;
+          console.log(data.name);
+
+          // Animation begins
+          hero.style.height = "100%";
+          prepare.style.display = "flex";
+
+          new fullpage("#fullpage", {
+            navigation: true,
+            anchors: ["heroScreen", "prepareScreen"],
+            parallax: true,
+            onLeave: function(origin, destination, direction) {
+              console.log("Leaving section" + origin.index);
+            }
+          });
         });
       })
       .catch(function(error) {
