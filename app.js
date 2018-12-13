@@ -22,6 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
   provider.setCustomParameters({
     allow_signup: true
   });
+  let userInfo;
+
+  function httpGetAsync(theUrl, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        callback(xmlHttp.responseText);
+    };
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+  }
 
   authButton.onclick = () => {
     firebase
@@ -33,7 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // The signed-in user info.
         var user = result.user;
         // ...
-        console.log(token, user);
+        var promise = $.getJSON(
+          `https://api.github.com/user?access_token=${token}`
+        );
+        promise.done(data => {
+          userInfo = data;
+        });
       })
       .catch(function(error) {
         // Handle Errors here.
@@ -44,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
+        console.log(email, errorMessage);
       });
   };
 });
