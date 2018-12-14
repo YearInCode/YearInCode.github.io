@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
           prepare.style.display = "flex";
 
           new fullpage("#fullpage", {
+            licenseKey: "LICENSE",
             navigation: true,
             anchors: ["heroScreen", "prepareScreen"],
             parallax: true,
