@@ -1,10 +1,10 @@
 var config = {
-  apiKey: "AIzaSyC_ALjoUddvJVfVbKsWlD-FFK-jtyrg4PQ",
-  authDomain: "wrapped-21a29.firebaseapp.com",
-  databaseURL: "https://wrapped-21a29.firebaseio.com",
-  projectId: "wrapped-21a29",
-  storageBucket: "wrapped-21a29.appspot.com",
-  messagingSenderId: "606608835269"
+  apiKey: config.apiKey,
+  authDomain: config.authDomain,
+  databaseURL: config.databaseURL,
+  projectId: config.projectId,
+  storageBucket: config.storageBucket,
+  messagingSenderId: config.messagingSenderId
 };
 firebase.initializeApp(config);
 
