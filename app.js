@@ -355,11 +355,11 @@ function updateTastebreakers(){
 }
 
 function updateBestStarred(){
-  if (bestStarred.length > 1){
+  if (!isEmpty(bestStarred)){
     var bestStarredList = document.getElementById("best-starred-list7");
     var idx = 0
     for (var i in bestStarred){
-      if(i>=6){
+      if(idx>=6){
         break;
       }
       var li = document.createElement("li");
@@ -374,4 +374,14 @@ function updateBestStarred(){
   } else{
     document.getElementById("subtitle7").innerHTML = "Looks like you haven't starred any repositories this year. Why not explore a few more for 2019?"
   }
+}
+
+
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
 }
