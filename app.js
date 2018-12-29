@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(token);
         $.ajax({
           async: false,
-          url: "/authenticate",
+          url: "serverURL/authenticate",
           type: "POST",
           data: {"token": token},
           success: function(result){
