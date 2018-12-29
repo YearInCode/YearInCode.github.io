@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
               console.log("Fav langs: " + result);
               favLanguages = result.slice(0, -1).split(",");
               for(var i in favLanguages){
-                favLanguages[i] = favLanguages[i].slice(3, -1);
+                favLanguages[i] = favLanguages[i].slice(2, -1);
               }
               updateLanguages();
             }
