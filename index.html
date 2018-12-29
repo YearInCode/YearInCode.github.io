@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
 
-    <script src="https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.4/fullpage.extensions.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
     <script src="config.js"></script>
@@ -28,6 +28,12 @@
   </head>
 
   <body>
+    <div id="overlay"></div>
+    <div class="spinner" id="spinner" style="display: none">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+
     <div id="header">
       <div id="logo">
         <a href="https://github.com" target="blank_"
@@ -49,37 +55,160 @@
         <button id="auth-button">CONNECT WITH GITHUB</button>
       </div>
 
-      <div class="section" id="prepare">
+      <div id="prepare" class="section" style="display: none;">
         <p id="title">
           Before we get into your GitHub 2018, let's take a moment to appreciate
           code culture!
         </p>
         <div id="prepare-scroller">
           <p class="prepare-message" id="total-devs">
-            You're part of a community of more than <br />
-            <span class="message-span" id="total-devs-span">31M</span>
-            developers
+            You're part of a community of<br />
+            <span class="message-span" id="total-devs-span">31M+</span> <br />developers
           </p>
           <p class="prepare-message" id="total-orgs">
-            who are a part of more than <br />
-            <span class="message-span" id="total-orgs-span">2.1M</span>
+            who are a part of<br />
+            <span class="message-span" id="total-orgs-span">2.1M+</span> <br />
             organisations
           </p>
           <p class="prepare-message" id="total-repos">
-            that have created more than <br />
-            <span class="message-span" id="total-repos-span">96M</span>
+            that have created<br />
+            <span class="message-span" id="total-repos-span">96M+</span> <br />
             repositories
           </p>
         </div>
       </div>
+
+
+
+    <div id="screen2" class="section" style="display: none;">
+      <div id="background-title2">
+        <p>FIRST</p>
+      </div>
+      <div id="main-text2">
+        <p class="subtitle2">There's a first time for everything...</p>
+        <p class="subtitle2">Let's take a look back at some of your first times</p>
+        <div id="scroller-content2">
+          <p id="first-repo2" class="description-text2"> <span id="first-repo-title" class="bold-span2 code2"> </span> <br />
+            was the title of your first repository this year</p>
+          <!-- <p id="first-commit-date2" class="description-text2"><span class="bold-span"> 19th Jan </span> <br />
+            was the date of your first commit</p> -->
+        </div>
+      </div>
     </div>
+
+    <div id="screen3" style="display: none" class="section">
+      <div id="background3"> </div>
+
+        <div id="question-content3">
+          <p id="question3">How many repositories do you estimate you've made this year?</p>
+          <div id="question-buttons3">
+
+          </div>
+        </div>
+
+        <div id="main-content3" style="display: none">
+          <i class="fa fa-star" id="background-star3"></i>
+          <div id="container3">
+            <div id="num-repos3"><p><span id="num-repos-main"></span>repositories</p></div>
+            <!-- <p id="first-line" style="display: none; font-size: 50px; text-align: center;">That's right - you made <span id="num-repose-span">103</span> repositories this year!</p>
+            <div id="main-data" style="display: none">
+              <p id="most-starred" class="data-flex-items">Out of all your repositories, your most <i class="fa fa-star" style="color: orange"></i> repository is<br />
+                <span id="most-starred-repo-span"><q>python-dataset-guide</q></span><br />
+                 with a total of <span id="num-stars-span">125</span> stars!
+              </p>
+              <ol id="repo-list" class="data-flex-items">
+                Let's take a quick trip down memory lane - here are 5 repositories you made this year:
+                <li>Lol</li>
+              </ol>
+            </div> -->
+            <p id="text3">Out of all those repositories <br />
+              <span id="most-starred-span3"></span> <br />
+              was your most <i class="fa fa-star" style="color: orange"></i> repository, with a total of <br />
+              <span id="num-stars3"></span> stars!</p>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="screen4" style="display: none" class="section">
+      <div id="background4">
+        <img id="language-img4"/>
+        <div id="main-content4">
+          <div id="content-heading4"><p id="subtitle4">Favourite Langauge</p>
+          <p id="fav-lang4"></p></div>
+          <div id="rest-content4">
+          <p><span id="language-span4"></span> was by far your preferred programming language, amongst others, like:</p>
+          <ol id="list-languages4">
+
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="screen5" style="display: none" class="section">
+      <div id="background5"> </div>
+        <div id="container5">
+          <p id="title5">Repositories</p>
+          <div id="content5">
+            <p class="subtitle5">Repositories are at the heart of GitHub. They allow for better organisation, collaboration, and a chance to learn.</p>
+            <p class="subtitle5">We have compiled a list of recommended repositories to look through or contribute to. Happy coding!</p>
+            <div id="lists5">
+              <ul id="recommended-repo5">
+                <p>Recommended Repositories For You</p>
+
+              </ul>
+              <ul id="recommended-contrib-repo5">
+                <p>Recommended Repositories To Contribute To</p>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div id="screen6" style="display:none" class="section">
+      <div id="background6"> </div>
+        <div id="container6">
+          <p id="title6">Tastebreakers</p>
+          <p id="subtitle6">In 2019, you could change things up a bit. Here's a list of repositories which you don't generally frequent. To a fruitful new year!</p>
+          <ul id="tastebreakers-list6">
+
+          </ul>
+        </div>
+    </div>
+
+
+    <div id="screen7" style="display:none" class="section">
+      <div id="background7"> </div>
+        <div id="container7">
+          <p id="title7">Best Starred Repositories</p>
+          <p id="subtitle7">Revisiting some of your favourite repositories - your interests, down below:</p>
+          <ul id="best-starred-list7">
+
+          </ul>
+          <a href="https://github.com/explore" target="_blank"><button id="discover-repos-btn7">Discover More</button></a>
+        </div>
+    </div>
+
+    <div id="wrap-screen" style="display:none" class="section">
+        <p id="wrap">&lt;/2018&gt;</p>
+    </div>
+
+</div>
+
+
+
 
     <div id="footer">
       <p>
         Made with <i class="fas fa-heart"></i> by
-        <a href="https://twitter.com/rishabh16_">Rishabh Anand</a> and
+        <a href="https://twitter.com/malharkamat">Malhar Kamat</a> and
         <a href="https://twitter.com/sarvasvkulpati">Sarvasv Kulpati</a>
       </p>
     </div>
+
   </body>
 </html>

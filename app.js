@@ -1,12 +1,14 @@
 var config = {
-  apiKey: config.apiKey,
-  authDomain: config.authDomain,
-  databaseURL: config.databaseURL,
-  projectId: config.projectId,
-  storageBucket: config.storageBucket,
-  messagingSenderId: config.messagingSenderId
+  apiKey: "AIzaSyDnY5vGhGekMtd_JZqXxRZp8CVJ4Exaj_E",
+  authDomain: "yearincode-b03f4.firebaseapp.com",
+  databaseURL: "https://yearincode-b03f4.firebaseio.com",
+  projectId: "yearincode-b03f4",
+  storageBucket: "",
+  messagingSenderId: "809927327037"
 };
 firebase.initializeApp(config);
+
+var highestStars, highestStarredRepo, numRepos, recommendedRepos, recommendedContribRepos, tastebreakerRepos, favLanguages, bestStarred;
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("App loaded!");
@@ -16,8 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const clientID = "05d4f56f89ba1a91c3bd";
   const clientSecret = "a9e53f438683513f1fd92d561cce3252af0504e9";
 
+  const firstRepo = document.getElementById("first-repo-title");
+
   const hero = document.getElementById("hero");
   const prepare = document.getElementById("prepare");
+  const screen2 = document.getElementById("screen2");
+  const screen3 = document.getElementById("screen3");
+  const screen4 = document.getElementById("screen4");
+  const screen5 = document.getElementById("screen5");
+  const screen6 = document.getElementById("screen6");
+  const screen7 = document.getElementById("screen7");
+  const wrapScreen = document.getElementById("wrap-screen");
 
   var provider = new firebase.auth.GithubAuthProvider();
   provider.addScope("repo");
@@ -37,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   authButton.onclick = () => {
+    document.getElementById("spinner").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -45,6 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        var username = user.displayName;
+        console.log(token);
+        $.ajax({
+          async: false,
+          url: "/authenticate",
+          type: "POST",
+          data: {"token": token},
+          success: function(result){
+            console.log("done");
+          }
+        });
         // ...
         var promise = $.getJSON(
           `https://api.github.com/user?access_token=${token}`
@@ -52,14 +76,129 @@ document.addEventListener("DOMContentLoaded", () => {
         promise.done(data => {
           console.log(data.name);
 
+
+          // getting the individual data from the server
+          $.ajax({
+            async: false,
+            url: "/get_highest_starred_repo_created",
+            type: "GET",
+            success: function(result){
+              result = result.slice(1, -1).split(",");
+              console.log("Most stars: " + result[0]);
+              document.getElementById("num-stars3").innerHTML = result[0];
+              console.log("Highest starred repo: " + result[1].slice(3, -1));
+              document.getElementById("most-starred-span3").innerHTML = result[1].slice(3, -1);
+              highestStars = result[0];
+              highestStarredRepo = result[1];
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_first_repo_created",
+            type: "GET",
+            success: function(result){
+              firstRepo.innerHTML = "<q>"+result+"</q>";
+              console.log("First Repo: " + result);
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_num_repos_created",
+            type: "GET",
+            success: function(result){
+              console.log("Num repos: " + result);
+              numRepos = parseInt(result);
+              document.getElementById("num-repos-main").innerHTML = numRepos;
+              updateButtons();
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_favorite_languages",
+            type: "GET",
+            success: function(result){
+              console.log("Fav langs: " + result);
+              favLanguages = result.slice(0, -1).split(",");
+              for(var i in favLanguages){
+                favLanguages[i] = favLanguages[i].slice(3, -1);
+              }
+              updateLanguages();
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_recommended_repos",
+            type: "GET",
+            success: function(result){
+              console.log("Recommended Repos: " + result);
+              recommendedRepos = JSON.parse(result);
+              // for(var i in recommendedRepos){
+              //   recommendedRepos[i] = recommendedRepos[i].slice(3, -1);
+              // }
+              console.log(recommendedRepos);
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_tastebreaker_repos",
+            type: "GET",
+            success: function(result){
+              console.log("Tastebreaker Repos: " + result);
+              tastebreakerRepos = JSON.parse(result);
+              // for(var i in tastebreakerRepos){
+              //   tastebreakerRepos[i] = tastebreakerRepos[i].slice(3, -1)
+              // }
+              console.log(tastebreakerRepos);
+              updateTastebreakers();
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_recommended_contribution_repos",
+            type: "GET",
+            success: function(result){
+              console.log("Recommended Contrib Repos: " + result);
+              recommendedContribRepos = JSON.parse(result);
+              // for (var i in recommendedContribRepos){
+              //   recommendedContribRepos[i] = recommendedContribRepos[i].slice(3, -1);
+              // }
+              updateRecommendedRepos();
+            }
+          });
+          $.ajax({
+            async: false,
+            url: "/get_best_starred_repos",
+            type: "GET",
+            success: function(result){
+              console.log("Best Starred Repos: " + result);
+              bestStarred = {};
+              bestStarred = JSON.parse(result);
+              // for (var i in bestStarred){
+              //   bestStarred[i] = bestStarred[i].slice(3, -1);
+              // }
+              updateBestStarred();
+            }
+          });
+
+          document.getElementById("spinner").style.display = "none";
+          document.getElementById("overlay").style.display = "none";
+          document.getElementById("auth-button").style.display = "none";
+
           // Animation begins
           hero.style.height = "100%";
           prepare.style.display = "flex";
+          screen2.style.display = "flex";
+          screen3.style.display = "flex";
+          screen4.style.display = "flex";
+          screen5.style.display = "flex";
+          screen6.style.display = "flex";
+          screen7.style.display = "flex";
+          wrapScreen.style.display = "flex";
 
           new fullpage("#fullpage", {
             licenseKey: "LICENSE",
             navigation: true,
-            anchors: ["heroScreen", "prepareScreen"],
+            // anchors: ["heroScreen", "prepareScreen", "screen2"],
             parallax: true,
             onLeave: function(origin, destination, direction) {
               console.log("Leaving section" + origin.index);
@@ -80,3 +219,155 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   };
 });
+
+
+function updateButtons(){
+  // Logic to display the randomised numbers in each button choice
+  var buttonsDiv = document.getElementById("question-buttons3");
+  var correctButtonPos = Math.floor(Math.random() * 3) + 1;
+  for (var i=1; i<=3; i++){
+    var btn = document.createElement("button");
+    btn.setAttribute("class", "selection-btn3 btn3");
+    btn.setAttribute("onclick", "verifyNumRepos(event)");
+    btn.setAttribute("id", i+"-element3");
+    if (i == correctButtonPos){
+      btn.innerHTML = numRepos;
+    } else{
+      var min = numRepos - (Math.floor(numRepos/2));
+      var max = numRepos + (Math.floor(numRepos/2));
+      while (true){
+        var value = Math.floor(Math.random() * (max - min + 1)) + min;
+        if (value != numRepos){
+          btn.innerHTML = value;
+          break;
+        }
+      }
+    }
+    buttonsDiv.appendChild(btn);
+  }
+}
+
+function verifyNumRepos(event){
+  var btnId = event.target.id;
+  var btn = document.getElementById(btnId);
+  if (parseInt(btn.innerHTML) == numRepos) {
+    // proceed with next slide
+    // ...
+    $("#question-content3").animate({ height: "90%", opacity: 0},"5000", function(){
+      $("#question-content3").remove();
+      displayMainContent();
+    });
+  } else {
+    btn.style.backgroundColor = "#D3F9B5";
+    btn.style.cursor = "default";
+    btn.style.boxShadow = "none";
+  }
+}
+
+function displayMainContent(){
+  $("#main-content3").fadeIn(1000, function(){
+    // $("#num-repos").delay("500").animate({fontSize: "10vw"}, function(){
+    //   $("#first-line").delay("100").fadeIn("slow", function(){
+    //     $("#main-data").delay("500").fadeIn();
+    //   });
+    // });
+    console.log("lit")
+  });
+}
+
+
+function updateLanguages(){
+  var favouriteLang = favLanguages[0];
+  var restLangs = favLanguages.slice(1);
+  var img = document.getElementById("language-img4");
+  img.setAttribute("src", "static/images/languages/"+favouriteLang.toLowerCase()+".png");
+  document.getElementById("fav-lang4").innerHTML = favouriteLang;
+  document.getElementById("language-span4").innerHTML = favouriteLang;
+  var langsOl = document.getElementById("list-languages4");
+  for (var i in restLangs){
+    console.log(i);
+    if (i >= 4){
+      break;
+    }
+    var li = document.createElement("li");
+    li.innerHTML = restLangs[i];
+    langsOl.appendChild(li);
+  }
+}
+
+
+function updateRecommendedRepos(){
+  var recommendedReposList = document.getElementById("recommended-repo5");
+  var recommendedContribReposList = document.getElementById("recommended-contrib-repo5");
+  var idx = 0;
+
+  for (var i in recommendedRepos){
+    if(idx>=6){
+      break;
+    }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.setAttribute("href", recommendedRepos[i]);
+    a.setAttribute("target", "_blank");
+    a.innerHTML = i;
+    li.appendChild(a);
+    recommendedReposList.appendChild(li);
+    idx++;
+  }
+
+  var idx = 0;
+  for (var i in recommendedContribRepos){
+    if(idx>=6){
+      break;
+    }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.setAttribute("href", recommendedContribRepos[i]);
+    a.setAttribute("target", "_blank");
+    a.innerHTML = i;
+    li.appendChild(a);
+    recommendedContribReposList.appendChild(li);
+    idx++;
+  }
+}
+
+
+function updateTastebreakers(){
+  var tastebreakersList = document.getElementById("tastebreakers-list6");
+  var idx = 0;
+  for (var i in tastebreakerRepos){
+    if(idx>=6){
+      break;
+    }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.setAttribute("href", tastebreakerRepos[i]);
+    a.setAttribute("target", "_blank");
+    a.innerHTML = i;
+    li.appendChild(a);
+    tastebreakersList.appendChild(li);
+    idx++
+  }
+}
+
+function updateBestStarred(){
+  if (bestStarred.length > 1){
+    var bestStarredList = document.getElementById("best-starred-list7");
+    var idx = 0
+    for (var i in bestStarred){
+      if(i>=6){
+        break;
+      }
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.setAttribute("href", bestStarred[i]);
+      a.setAttribute("target", "_blank");
+      a.innerHTML = i;
+      li.appendChild(a);
+      bestStarredList.appendChild(li);
+      idx++
+    }
+  } else{
+    document.getElementById("subtitle7").innerHTML = "Looks like you haven't starred any repositories this year. Why not explore a few more for 2019?"
+  }
+}
