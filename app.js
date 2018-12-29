@@ -1,12 +1,12 @@
-var config = {
-  apiKey: "AIzaSyDnY5vGhGekMtd_JZqXxRZp8CVJ4Exaj_E",
-  authDomain: "yearincode-b03f4.firebaseapp.com",
-  databaseURL: "https://yearincode-b03f4.firebaseio.com",
-  projectId: "yearincode-b03f4",
+var configFinal = {
+  apiKey: config.apiKey,
+  authDomain: config.authDomain,
+  databaseURL: config.databaseURL,
+  projectId: config.projectId,
   storageBucket: "",
-  messagingSenderId: "809927327037"
+  messagingSenderId: config.messagingSenderId
 };
-firebase.initializeApp(config);
+firebase.initializeApp(configFinal);
 
 const serverURL = "https://yearincode.herokuapp.com";
 
@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   var authButton = document.getElementById("auth-button");
 
-  const clientID = "05d4f56f89ba1a91c3bd";
-  const clientSecret = "a9e53f438683513f1fd92d561cce3252af0504e9";
+  const clientID = clientIDConfig;
+  const clientSecret = clientSecretConfig;
 
   const firstRepo = document.getElementById("first-repo-title");
 
