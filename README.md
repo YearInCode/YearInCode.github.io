@@ -1,29 +1,19 @@
-# 2018 Wrapped()
+# YearInCode
 
-A year in code - reviewed
-<br>
-Are you a GitHub user who already got their Spotify 2018 Wrapped? Fret not because YearInCode has your back!
+🎉🎉Congratulations for getting through another year of coding!🎉🎉
 
----
+![Congrats](https://media.giphy.com/media/vmtxnxveVUodG/giphy.gif)
 
-## What you can do
+This year on Github, you were part of a community of **31 million developers** from over **2.1 million organisations** who've created more than **96 million repositories**.
 
-Deck the code with **2018 Wrapped** - a fun way of finding out what you did this year to make your GitHub experience all the more merrier and joyful!
+ 💻 That's a lot of code! So to wrap up the year, we thought it would be cool to look back on your year- the repos you made, the languages you coded in, the skills you developed- so we made **YearInCode**.
 
-Go check out what made your 2018 at [YearInCode](https://YearInCode.github.io)!
+Inspired by spotify wrapped, YearInCode is a culmination of your development through the year, check it out! [YearInCode](https://YearInCode.github.io)!
 
-Login using your preferred GitHub account and kick back as you watch the past year unfold because we'll give you the best of what you've done this year from your contributions all the way to your user stats - all neatly bundled in one place!
-
----
-
-## Share your 2018 with us
-
-Let's be honest...if you don't share it, did it really happen?
-Tweet it, Blog about it on Medium, Share it on Facebook - spread the cheer for New Year's here!
 
 ---
 
 ## Acknowledgements
 
-This fun app was made by fellow GitHub users [Rishabh Anand](https://twitter.com/rishabh16_) and [Sarvasv Kulpati](https://twitter.com/sarvasvkulpati).
-It'd mean a lot if you could _Star_ this repo and, share and spread it amongst friends and family!
+This app was made by fellow GitHub users [Sarvasv Kulpati](https://twitter.com/sarvasvkulpati) and [Malhar Kamat](https://twitter.com/malharkamat) in two days.
+It'd mean a lot if you could 🌟 this repo and contribute if you have any suggestions!
