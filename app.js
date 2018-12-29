@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const firstRepo = document.getElementById("first-repo-title");
 
+  var token = "";
+
   const hero = document.getElementById("hero");
   const prepare = document.getElementById("prepare");
   const screen2 = document.getElementById("screen2");
@@ -57,20 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
       .signInWithPopup(provider)
       .then(function(result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        var token = result.credential.accessToken;
+        token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
         var username = user.displayName;
         console.log(token);
-        $.ajax({
-          async: false,
-          url: serverURL+"/authenticate",
-          type: "POST",
-          data: {"token": token},
-          success: function(result){
-            console.log("done");
-          }
-        });
+        // $.ajax({
+        //   async: false,
+        //   url: serverURL+"/authenticate",
+        //   type: "POST",
+        //   data: {"token": token},
+        //   success: function(result){
+        //     console.log("done");
+        //   }
+        // });
         // ...
         var promise = $.getJSON(
           `https://api.github.com/user?access_token=${token}`
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // getting the individual data from the server
           $.ajax({
             async: false,
-            url: serverURL+"/get_highest_starred_repo_created",
+            url: serverURL+"/get_highest_starred_repo_created/"+token,
             type: "GET",
             success: function(result){
               result = result.slice(1, -1).split(",");
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_first_repo_created",
+            url: serverURL+"/get_first_repo_created/"+token,
             type: "GET",
             success: function(result){
               firstRepo.innerHTML = "<q>"+result+"</q>";
@@ -105,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_num_repos_created",
+            url: serverURL+"/get_num_repos_created/"+token,
             type: "GET",
             success: function(result){
               console.log("Num repos: " + result);
@@ -116,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_favorite_languages",
+            url: serverURL+"/get_favorite_languages/"+token,
             type: "GET",
             success: function(result){
               console.log("Fav langs: " + result);
@@ -129,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_recommended_repos",
+            url: serverURL+"/get_recommended_repos/"+token,
             type: "GET",
             success: function(result){
               console.log("Recommended Repos: " + result);
@@ -142,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_tastebreaker_repos",
+            url: serverURL+"/get_tastebreaker_repos/"+token,
             type: "GET",
             success: function(result){
               console.log("Tastebreaker Repos: " + result);
@@ -156,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_recommended_contribution_repos",
+            url: serverURL+"/get_recommended_contribution_repos/"+token,
             type: "GET",
             success: function(result){
               console.log("Recommended Contrib Repos: " + result);
@@ -169,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           $.ajax({
             async: false,
-            url: serverURL+"/get_best_starred_repos",
+            url: serverURL+"/get_best_starred_repos/"+token,
             type: "GET",
             success: function(result){
               console.log("Best Starred Repos: " + result);
