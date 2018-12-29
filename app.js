@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
               console.log("Most stars: " + result[0]);
               document.getElementById("num-stars3").innerHTML = result[0];
               console.log("Highest starred repo: " + result[1].slice(3, -1));
-              document.getElementById("most-starred-span3").innerHTML = result[1].slice(3, -1);
+              document.getElementById("most-starred-span3").innerHTML = result[1].slice(2, -1);
               highestStars = result[0];
               highestStarredRepo = result[1];
             }
@@ -284,7 +284,7 @@ function updateLanguages(){
   var favouriteLang = favLanguages[0];
   var restLangs = favLanguages.slice(1);
   var img = document.getElementById("language-img4");
-  img.setAttribute("src", "static/images/languages/"+favouriteLang.toLowerCase()+".png");
+  img.setAttribute("src", "images/languages/"+favouriteLang.toLowerCase()+".png");
   document.getElementById("fav-lang4").innerHTML = favouriteLang;
   document.getElementById("language-span4").innerHTML = favouriteLang;
   var langsOl = document.getElementById("list-languages4");
