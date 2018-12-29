@@ -290,7 +290,7 @@ function updateLanguages(){
   var langsOl = document.getElementById("list-languages4");
   for (var i in restLangs){
     console.log(i);
-    if (i >= 4){
+    if (i >= 3){
       break;
     }
     var li = document.createElement("li");
