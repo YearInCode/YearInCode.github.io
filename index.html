@@ -6,8 +6,8 @@
     <title>2018 Wrapped()</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="shortcut icon" href="images/favicon.ico" type="images/x-icon" />
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="images/x-icon" />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:600,700|Source+Code+Pro:700|Raleway:600"
       rel="stylesheet"
@@ -18,13 +18,13 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='styles.css') }}" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.4/fullpage.extensions.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
     <script src="config.js"></script>
-    <script src="app.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
   </head>
 
   <body>
@@ -37,7 +37,7 @@
     <div id="header">
       <div id="logo">
         <a href="https://github.com" target="blank_"
-          ><img src="images/GitHub-Mark/PNG/GitHub-Mark-64px.png" alt="logo"
+          ><img src="{{ url_for('static', filename='images/GitHub-Mark/PNG/GitHub-Mark-64px.png') }}" alt="logo"
         /></a>
       </div>
     </div>
@@ -193,9 +193,35 @@
         </div>
     </div>
 
-    <div id="wrap-screen" style="display:none" class="section">
-        <p id="wrap">&lt;/2018&gt;</p>
+    <div id="wrap-screen">
+      <div id="background8"><p id="wrap8">&lt;/2018&gt;</p></div>
+    <div id="share-buttons8">
+      <p id="share-subtitle8">Share this project:</p>
+      <div id="flex-btn-container8">
+        <!-- Email -->
+        <a href="mailto:?Subject=Your 2018 In Code&amp;Body=Check%20out%20your%20past%20year%20of%20code%20here! https://yearincode.github.io/"><div class="share-btns8" style="background-image: url('images/share-logos/email.png')"></div></a>
+
+        <!-- Facebook -->
+        <a href="http://www.facebook.com/sharer.php?u=https://yearincode.github.io/" target="_blank"><div class="share-btns8" style="background-image: url('images/share-logos/facebook.png')"></div></a>
+
+        <!-- Google+ -->
+        <a href="https://plus.google.com/share?url=https://yearincode.github.io/" target="_blank"><div class="share-btns8" style="background-image: url('images/share-logos/google.png')"></div></a>
+
+        <!-- LinkedIn -->
+        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://yearincode.github.io/" target="_blank"><div class="share-btns8" style="background-image: url('images/share-logos/linkedin.png')"></div></a>
+
+        <!-- Reddit -->
+        <a href="http://reddit.com/submit?url=https://yearincode.github.io/&amp;title=Your 2018 In Code" target="_blank"><div class="share-btns8" style="background-image: url('images/share-logos/reddit.png')"></div></a>
+
+        <!-- Tumblr-->
+        <a href="http://www.tumblr.com/share/link?url=https://yearincode.github.io/&amp;title=Your 2018 In Code" target="_blank"><div class="share-btns8" style="background-image: url('images/share-logos/tumblr.png')"></div></a>
+
+        <!-- Twitter -->
+        <a href="https://twitter.com/share?url=https://yearincode.github.io/&amp;text=Your%202018%20In%20Code&amp;hashtags=yearincode2018" target="_blank"><div class="share-btns8" style="background-image: url('images/share-logos/twitter.png')"></div></a>
+        </div>
     </div>
+    </div>
+
 
 </div>
 

@@ -751,12 +751,16 @@ a{
   height: 100%;
   text-align: center;
   box-sizing: border-box;
-  background-color: #1789FC;
-  position: absolute;
-  z-index: -1;
 }
 
-#wrap{
+#background8{
+  width: 100%;
+  height: 100%;
+  background-color: #1789FC;
+  position: absolute;
+}
+
+#wrap8{
   font-size: 15vw;
   font-weight: 700;
   letter-spacing: 2vw;
@@ -766,6 +770,46 @@ a{
   transform: translate(-50%, -50%);
   color: #FDB833;
 }
+
+#share-buttons8{
+  bottom: 5vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  z-index: 1;
+}
+
+#flex-btn-container8{
+  display: flex;
+  flex-direction: row;
+}
+
+.share-btns8{
+  width: 3vw;
+  height: 3vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#share-subtitle8{
+  font-size: 2vw;
+  font-weight: 700;
+  border-bottom: solid 4px #FDB833;
+  display: inline-block;
+  padding-bottom: 1vh;
+  margin-bottom: 4vh;
+}
+
+#share-buttons8 a{
+  margin: 0px 1vw;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#share-buttons8 a:hover{
+  transform: translate(0, -8%);
+}
+
 
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
