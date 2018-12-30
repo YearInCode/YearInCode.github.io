@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const wrapScreen = document.getElementById("wrap-screen");
 
   var provider = new firebase.auth.GithubAuthProvider();
-  provider.addScope("repo");
-  provider.addScope("user");
+  // provider.addScope("repo");
+  // provider.addScope("user");
   provider.setCustomParameters({
     allow_signup: true
   });
