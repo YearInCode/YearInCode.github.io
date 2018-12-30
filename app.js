@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
               console.log("Highest starred repo: " + result[1].slice(3, -1));
               document.getElementById("most-starred-span3").innerHTML = result[1].slice(2, -1);
               highestStars = result[0];
-              highestStarredRepo = result[1];
+              highestStarredRepo = result[1].slice(2, -1);
             }
           });
           $.ajax({
@@ -183,6 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
               updateBestStarred();
             }
           });
+
+          updateTwitterShare();
 
           document.getElementById("spinner").style.display = "none";
           document.getElementById("overlay").style.display = "none";
@@ -384,4 +386,10 @@ function isEmpty(obj) {
             return false;
     }
     return true;
+}
+
+function updateTwitterShare(){
+  var message = "My favourite programming language this year was '"+favLanguages[0]+"', and I made "+numRepos+" repositories, my most starred being '"+highestStarredRepo+"! Find out your year in code too!";
+  var url = "https://twitter.com/share?url=https://yearincode.github.io/&amp;text="+message+"&amp;hashtags=yearincode2018"
+  document.getElementById("twitter-share-link").setAttribute("href", url);
 }
