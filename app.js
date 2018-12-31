@@ -222,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var credential = error.credential;
         // ...
         console.log(email, errorMessage);
+        console.log(location.protocol);
       });
   };
 });
