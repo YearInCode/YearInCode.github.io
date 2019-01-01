@@ -112,6 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
             success: function(result){
               console.log("Num repos: " + result);
               numRepos = parseInt(result);
+              if (numRepos == 0){
+                window.alert("You don't seem to have made any public repositories this year :(");
+              }
               document.getElementById("num-repos-main").innerHTML = numRepos;
               updateButtons();
             }
