@@ -6,6 +6,3 @@ var config = {
   storageBucket: "",
   messagingSenderId: "809927327037"
 };
-
-const clientIDConfig = "05d4f56f89ba1a91c3bd";
-const clientSecretConfig = "a9e53f438683513f1fd92d561cce3252af0504e9";
